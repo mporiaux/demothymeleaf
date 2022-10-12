@@ -26,7 +26,8 @@
   <th>DATE COMMANDE</th>
   <th>ETAT</th>
   <th>MONTANT</th>
- <tr th:each="comfact : ${moncli.comfacts}">
+ <!--<tr th:each="comfact : ${moncli.facturesNonPayees()}">-->
+  <tr th:each="comfact : ${moncli.comfacts}">
   <td th:text="${comfact.numcommande}"/>
   <td th:text="${comfact.numfact}"/>
   <td th:text="${comfact.datecom}"/>

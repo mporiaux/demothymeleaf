@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +43,8 @@ public class GestComfact {
 
             List<Comfact> lcf = comfactRepository.findComfactByClient(cl);*/
              Client cl = clientServiceImpl.read(idclient);
+            Comfact cf = new Comfact(Date.valueOf(LocalDate.now()),"F",new BigDecimal(1000),cl);
+             comfactServiceImpl.create(cf);
              List<Comfact> lcf = comfactServiceImpl.getComfacts(cl);
             model.put("moncli",cl);
             model.put("clicf", lcf);
