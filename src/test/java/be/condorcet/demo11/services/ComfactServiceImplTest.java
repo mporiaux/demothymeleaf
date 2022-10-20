@@ -62,7 +62,9 @@ class ComfactServiceImplTest {
 
     @Test
     void create() {
-        assertNotEquals(0,cf.getNumcommande(),"numéro de commande non incrémenté");
+
+         assertNotEquals(0,cf.getNumcommande(),"numéro de commande non incrémenté");
+         //tester date et montant
     }
 
 
@@ -82,10 +84,10 @@ class ComfactServiceImplTest {
 
     @Test
     void update() {
-        cf.setMontant(new BigDecimal(50.25).setScale(2, RoundingMode.HALF_UP));
         //etc
         try{
             cf= comfactServiceImpl.update(cf);
+        cf.setMontant(new BigDecimal(50.25).setScale(2,RoundingMode.HALF_UP));
             assertEquals(cf.getMontant(),new BigDecimal(50.25).setScale(2, RoundingMode.HALF_UP),"montants différents "+cf.getMontant()+"-"+new BigDecimal(50.25));
             //etc
 

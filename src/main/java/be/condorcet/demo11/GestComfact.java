@@ -6,6 +6,8 @@ import be.condorcet.demo11.repositories.ClientRepository;
 import be.condorcet.demo11.repositories.ComfactRepository;
 import be.condorcet.demo11.services.ClientServiceImpl;
 import be.condorcet.demo11.services.ComfactServiceImpl;
+import be.condorcet.demo11.services.InterfClientService;
+import be.condorcet.demo11.services.InterfComfactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +32,9 @@ public class GestComfact {
     private ClientRepository clientRepository;*/
 
     @Autowired
-    private ClientServiceImpl clientServiceImpl;
+    private InterfClientService clientServiceImpl;
     @Autowired
-    private ComfactServiceImpl comfactServiceImpl;
+    private InterfComfactService comfactServiceImpl;
 
     @RequestMapping("/rechparcli")
     public String read(@RequestParam int idclient, Map<String, Object> model) {

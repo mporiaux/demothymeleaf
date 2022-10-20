@@ -2,9 +2,8 @@ package be.condorcet.demo11;
 
 import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.entities.Comfact;
-import be.condorcet.demo11.repositories.ClientRepository;
 import be.condorcet.demo11.services.ClientServiceImpl;
-import be.condorcet.demo11.services.ComfactServiceImpl;
+import be.condorcet.demo11.services.InterfClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ public class GestClient {
         private ClientRepository clientRepository;*/
 
     @Autowired
-     private ClientServiceImpl clientServiceImpl;
+     private InterfClientService clientServiceImpl;
 
     @RequestMapping("/tous")
     public String affTous(Map<String, Object> model){
@@ -65,8 +64,6 @@ public class GestClient {
         System.out.println("recherche du client n° "+idclient);
            try {
                Client cl = clientServiceImpl.read(idclient);
-               cl.getComfacts().add(new Comfact(Date.valueOf(LocalDate.now()),"F",BigDecimal.valueOf(1000),cl));
-               clientServiceImpl.update(cl);
                model.put("moncli",cl);
            }catch (Exception e) {
             System.out.println("----------erreur lors de la recherche -------- " + e);

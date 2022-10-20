@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ClientServiceImplTest {
     @Autowired
-    private ClientServiceImpl clientServiceImpl;
+    private InterfClientService clientServiceImpl;
 
     @Autowired
-    private ComfactServiceImpl comfactServiceImpl;
+    private InterfComfactService comfactServiceImpl;
 
     Client cl;
 
@@ -43,7 +43,7 @@ class ClientServiceImplTest {
     @AfterEach
     void tearDown() {
         try {
-            clientServiceImpl.delete(cl);
+           clientServiceImpl.delete(cl);
             System.out.println("effacement du client : "+cl);
         }
         catch (Exception e){

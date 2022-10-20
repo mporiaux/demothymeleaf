@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
+//@Service
 @Transactional(rollbackOn = Exception.class)
 public class ComfactServiceImpl  implements InterfComfactService{
     @Autowired
