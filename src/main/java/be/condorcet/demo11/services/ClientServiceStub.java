@@ -2,6 +2,8 @@ package be.condorcet.demo11.services;
 
 import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.entities.Comfact;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -46,7 +48,9 @@ public class ClientServiceStub implements InterfClientService{
 
     @Override
     public Client read(String nom, String prenom, String tel) {
-        return null;
+       Client cl =  new Client(nom,prenom,tel);
+       cl.setIdclient(1);
+       return cl;
     }
 
     @Override
@@ -56,5 +60,10 @@ public class ClientServiceStub implements InterfClientService{
         lc.add(new Client(1,"Durant","PrenomTest",1000,"LocTest","Rue Test","1","0001",null));
         lc.add(new Client(2,"Dupont","PrenomTest2",2000,"LocTest2","Rue Test2","2","0002",null));
         return lc;
+    }
+
+    @Override
+    public Page<Client> allp(Pageable pageable) throws Exception {
+        return null;
     }
 }

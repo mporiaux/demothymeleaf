@@ -7,6 +7,8 @@ package be.condorcet.demo11.services;
 
 
 import be.condorcet.demo11.entities.Client;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -58,7 +60,7 @@ public class ClientServiceMock implements InterfClientService {
 
     @Override
     public Client read(String nom, String prenom, String tel) {
-        return null;
+        return lc.stream().filter(cl->cl.getNom().equals(nom) && cl.getPrenom().equals(prenom)&& cl.getTel().equals(tel)).findFirst().get();
     }
 
     @Override
@@ -78,4 +80,10 @@ public class ClientServiceMock implements InterfClientService {
     public List<Client> all() throws Exception {
         return lc;
     }
+
+    @Override
+    public Page<Client> allp(Pageable pageable) throws Exception {
+        return null;
+    }
+
 }

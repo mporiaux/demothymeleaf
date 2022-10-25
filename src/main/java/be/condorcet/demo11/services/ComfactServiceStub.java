@@ -2,6 +2,8 @@ package be.condorcet.demo11.services;
 
 import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.entities.Comfact;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -39,6 +41,11 @@ public class ComfactServiceStub implements InterfComfactService{
         lcf.add(new Comfact(1,null,Date.valueOf(LocalDate.now()),"c",new BigDecimal("1000.00"),new Client(1,"NomTest","PrenomTest",1000,"LocTest","Rue Test","1","0001",null)));
         lcf.add(new Comfact(2,null,Date.valueOf(LocalDate.now()),"c",new BigDecimal("2000.00"),new Client(1,"NomTest2","PrenomTest2",1000,"LocTest","Rue Test","1","0001",null)));
         return lcf;
+    }
+
+    @Override
+    public Page<Comfact> allp(Pageable pageable) throws Exception {
+        return null;
     }
 
     @Override

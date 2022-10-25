@@ -4,6 +4,8 @@ import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.services.ClientServiceImpl;
 import be.condorcet.demo11.services.InterfClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,6 +68,19 @@ public class RestClient {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //-------------------Retrouver tous les clients --------------------------------------------------------
+    @RequestMapping(value =  "/all",method = RequestMethod.GET)
+    public ResponseEntity<List<Client>> listClient() throws Exception{
+        System.out.println("recherche de tous les clients");
+        return new ResponseEntity<>(clientServiceImpl.all(), HttpStatus.OK);
+    }
+
+    //-------------------Retrouver tous les clients triés et par page--------------------------------------------------------
+    @RequestMapping(value =  "/allp",method = RequestMethod.GET)
+    public ResponseEntity<Page<Client>> listClient(Pageable pageable) throws Exception{
+        System.out.println("recherche de tous les clients");
+        return new ResponseEntity<>(clientServiceImpl.allp(pageable), HttpStatus.OK);
+    }
     //-------------------Gérer les erreurs--------------------------------------------------------
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Void>  handleIOException(Exception ex) {

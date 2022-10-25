@@ -7,7 +7,8 @@ import java.util.List;
 import be.condorcet.demo11.repositories.ClientRepository;
 import be.condorcet.demo11.repositories.ComfactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.transaction.Transactional;
 
@@ -45,6 +46,11 @@ public class ComfactServiceImpl  implements InterfComfactService{
     @Override
     public List<Comfact> all() throws Exception {
         return comfactRepository.findAll();
+    }
+
+    @Override
+    public Page<Comfact> allp(Pageable pageable) throws Exception {
+        return  comfactRepository.findAll(pageable);
     }
 
     @Override

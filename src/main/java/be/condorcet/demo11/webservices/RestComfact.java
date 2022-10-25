@@ -10,6 +10,8 @@ import be.condorcet.demo11.entities.Comfact;
 import be.condorcet.demo11.services.InterfClientService;
 import be.condorcet.demo11.services.InterfComfactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,6 +69,20 @@ public class RestComfact {
         Comfact cf = comfactServiceImpl.read(id);
         comfactServiceImpl.delete(cf);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //-------------------Retrouver toutes les commandes --------------------------------------------------------
+    @RequestMapping(value =  "/all",method = RequestMethod.GET)
+    public ResponseEntity<List<Client>> listClient() throws Exception{
+        System.out.println("recherche de tous les clients");
+        return new ResponseEntity<>(clientServiceImpl.all(), HttpStatus.OK);
+    }
+
+    //-------------------Retrouver toutes les commandes paginées--------------------------------------------------------
+    @RequestMapping(value =  "/allp",method = RequestMethod.GET)
+    public ResponseEntity<Page<Comfact>> listComfact(Pageable pageable) throws Exception{
+        System.out.println("recherche de toutes les commandes");
+        return new ResponseEntity<>(comfactServiceImpl.allp(pageable), HttpStatus.OK);
     }
 
     //-------------------Gérer les erreurs--------------------------------------------------------

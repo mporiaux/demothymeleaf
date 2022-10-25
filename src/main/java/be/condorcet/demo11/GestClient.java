@@ -1,20 +1,14 @@
 package be.condorcet.demo11;
 
 import be.condorcet.demo11.entities.Client;
-import be.condorcet.demo11.entities.Comfact;
-import be.condorcet.demo11.services.ClientServiceImpl;
 import be.condorcet.demo11.services.InterfClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/clients")

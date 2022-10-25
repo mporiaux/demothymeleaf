@@ -3,6 +3,8 @@ package be.condorcet.demo11.services;
 import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.entities.Comfact;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -65,5 +67,10 @@ public class ComfactServiceMock implements InterfComfactService{
     @Override
     public List<Comfact> all() throws Exception {
         return lc;
+    }
+
+    @Override
+    public Page<Comfact> allp(Pageable pageable) throws Exception {
+        return null;
     }
 }

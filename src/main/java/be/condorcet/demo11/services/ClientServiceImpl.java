@@ -2,9 +2,9 @@ package be.condorcet.demo11.services;
 
 import be.condorcet.demo11.entities.Client;
 import be.condorcet.demo11.repositories.ClientRepository;
-import be.condorcet.demo11.repositories.ComfactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -54,5 +54,10 @@ public class ClientServiceImpl implements InterfClientService{
     @Override
     public List<Client> all() throws Exception {
         return clientRepository.findAll();
+    }
+
+    @Override
+    public Page<Client> allp(Pageable pageable) throws Exception {
+        return clientRepository.findAll(pageable);
     }
 }
