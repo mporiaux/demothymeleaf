@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Integer> {
    List<Client> findClientsByNomLike(String nom);
+   Client findClientsByNomAndPrenomAndTel(String nom,String prenom,String tel);
 }
 /*{
     @Query(value = "SELECT cl FROM Client cl WHERE  cl.cp = 1000")

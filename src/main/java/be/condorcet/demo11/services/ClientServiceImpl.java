@@ -23,6 +23,11 @@ public class ClientServiceImpl implements InterfClientService{
     }
 
     @Override
+    public Client read(String nom, String prenom, String tel) {
+         return clientRepository.findClientsByNomAndPrenomAndTel(nom,prenom,tel);
+    }
+
+    @Override
     public Client create(Client client) throws Exception {
         clientRepository.save(client);
         return client;

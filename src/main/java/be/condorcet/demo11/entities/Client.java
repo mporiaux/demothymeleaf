@@ -1,8 +1,8 @@
 package be.condorcet.demo11.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
@@ -23,6 +23,8 @@ public class Client {
     private String num;
     @NonNull
     private String tel;
+
+    @JsonIgnore
     // @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
   // @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
    @OneToMany(mappedBy = "client")
@@ -32,74 +34,6 @@ public class Client {
    @ToString.Exclude
     private List<Comfact> comfacts;
 
-    /**
-     * commandes en cours
-     * @return commandes en cours
-     */
-    public List<Comfact> commandesEnCours(){
-        List<Comfact> lEnCours= new ArrayList<>();
-        for(Comfact cf : comfacts){
-            if(cf.getEtat().equals("C")) lEnCours.add(cf);
-        }
-        return  lEnCours;
-    }
-
-    /**
-     * factures non payees
-     * @return factures non payees
-     */
-
-    public List<Comfact> facturesNonPayees(){
-        List<Comfact> lNonPayees= new ArrayList<>();
-        for(Comfact cf : comfacts){
-            if(cf.getEtat().equals("F")) lNonPayees.add(cf);
-        }
-        return  lNonPayees;
-    }
-
-    /**
-     * factures en retard
-     * @return factures en retard
-     */
-    public List<Comfact> facturesRetard(){
-        List<Comfact> lNonPayees= facturesNonPayees();
-        List<Comfact> lRetard = new ArrayList<>();
-        for(Comfact cf : lNonPayees){
-            if(cf.estEnRetard()) lRetard.add(cf);
-        }
-        return  lRetard;
-    }
-
-
-    /**
-     * factures payees
-     * @return fatures payees
-     */
-    public List<Comfact> facturesPayees(){
-        List<Comfact> lPayees= new ArrayList<>();
-        for(Comfact cf : comfacts){
-            if(cf.getEtat().equals("P")) lPayees.add(cf);
-        }
-        return  lPayees;
-    }
-
-    /**
-     * ajout d'une commande
-     * @param cf Comfact
-     */
-    public void addComfact(Comfact cf){
-        comfacts.add(cf);
-        cf.setClient(this);
-    }
-
-    /**
-     * suppression d'une commande
-     * @param cf Comfact
-     */
-    public void supComfact(Comfact cf){
-        comfacts.remove(cf);
-        cf.setClient(null);
-    }
 
 }
 
