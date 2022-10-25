@@ -41,6 +41,7 @@ public class ClientServiceImpl implements InterfClientService{
 
     @Override
     public Client update(Client client) throws Exception {
+         read(client.getIdclient());
          clientRepository.save(client);
         return client;
     }
