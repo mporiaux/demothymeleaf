@@ -37,7 +37,9 @@ public class RestClient {
     }
     //-------------------Retrouver le client correspondant à un triplet (nom,prénom,tel) unique donné--------------------------------------------------------
     @RequestMapping(value = "/{nom}/{prenom}/{tel}", method = RequestMethod.GET)
-    public ResponseEntity<Client> getClientUnique(@PathVariable(value = "nom") String nom, @PathVariable(value = "prenom") String prenom,@PathVariable(value = "tel") String tel)  throws Exception{
+    public ResponseEntity<Client> getClientUnique(@PathVariable(value = "nom") String nom,
+                                                  @PathVariable(value = "prenom") String prenom,
+                                                  @PathVariable(value = "tel") String tel)  throws Exception{
         System.out.println("recherche du client "+nom+" "+prenom+" "+tel);
         Client client = clientServiceImpl.read(nom,prenom,tel);
         return new ResponseEntity<>(client, HttpStatus.OK);

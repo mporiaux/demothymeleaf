@@ -73,9 +73,9 @@ public class RestComfact {
 
     //-------------------Retrouver toutes les commandes --------------------------------------------------------
     @RequestMapping(value =  "/all",method = RequestMethod.GET)
-    public ResponseEntity<List<Client>> listClient() throws Exception{
-        System.out.println("recherche de tous les clients");
-        return new ResponseEntity<>(clientServiceImpl.all(), HttpStatus.OK);
+    public ResponseEntity<List<Comfact>> listComfact() throws Exception{
+        System.out.println("recherche de toutes les commandes");
+        return new ResponseEntity<>(comfactServiceImpl.all(), HttpStatus.OK);
     }
 
     //-------------------Retrouver toutes les commandes paginées--------------------------------------------------------

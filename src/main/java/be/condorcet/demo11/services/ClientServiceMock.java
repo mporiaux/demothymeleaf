@@ -60,7 +60,9 @@ public class ClientServiceMock implements InterfClientService {
 
     @Override
     public Client read(String nom, String prenom, String tel) {
-        return lc.stream().filter(cl->cl.getNom().equals(nom) && cl.getPrenom().equals(prenom)&& cl.getTel().equals(tel)).findFirst().get();
+  return lc.stream().
+          filter(cl->cl.getNom().equals(nom) && cl.getPrenom().equals(prenom)&& cl.getTel().equals(tel)).
+          findFirst().get();
     }
 
     @Override
