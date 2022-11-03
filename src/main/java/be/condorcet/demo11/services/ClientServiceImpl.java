@@ -58,6 +58,7 @@ public class ClientServiceImpl implements InterfClientService{
 
     @Override
     public Page<Client> allp(Pageable pageable) throws Exception {
+        //pagination
         return clientRepository.findAll(pageable);
     }
 }
