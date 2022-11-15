@@ -131,7 +131,7 @@ class ClientServiceImplTest {
         List<Client> lc = clientServiceImpl.read("NomTest");
         boolean trouve=false;
         for(Client c : lc){
-            if(c.getNom().equals("NomTest"))  trouve=true;
+            if(c.getNom().startsWith("NomTest"))  trouve=true;
             else fail("un record ne correspond pas , nom = "+c.getNom());
         }
         assertTrue(trouve,"record non trouvé dans la liste");
