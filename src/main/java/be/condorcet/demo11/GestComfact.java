@@ -45,7 +45,7 @@ public class GestComfact {
 
             List<Comfact> lcf = comfactRepository.findComfactByClient(cl);*/
              Client cl = clientServiceImpl.read(idclient);
-            Comfact cf = new Comfact(Date.valueOf(LocalDate.now()),"F",new BigDecimal(1000),cl);
+            Comfact cf = new Comfact(Date.valueOf(LocalDate.now()),"c",new BigDecimal(1000),cl);
              comfactServiceImpl.create(cf);
              List<Comfact> lcf = comfactServiceImpl.getComfacts(cl);
             model.put("moncli",cl);

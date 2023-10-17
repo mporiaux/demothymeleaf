@@ -33,14 +33,14 @@ public class ComfactServiceImpl  implements InterfComfactService{
 
     @Override
     public Comfact update(Comfact comfact) throws Exception {
-        read(comfact.getNumcommande());
+        read(comfact.getIdcommande());
         comfactRepository.save(comfact);
         return comfact;
     }
 
     @Override
     public void delete(Comfact comfact) throws Exception {
-        comfactRepository.deleteById(comfact.getNumcommande());
+        comfactRepository.deleteById(comfact.getIdcommande());
     }
 
     @Override

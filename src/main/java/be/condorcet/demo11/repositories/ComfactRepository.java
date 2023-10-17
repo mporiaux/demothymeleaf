@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ComfactRepository   extends JpaRepository<Comfact,Integer> {
     public List<Comfact> findComfactByClient(Client cl);
-    public List<Comfact> findComfactByDatecom(Date dc);
+    public List<Comfact> findComfactByDatecommande(Date dc);
 }

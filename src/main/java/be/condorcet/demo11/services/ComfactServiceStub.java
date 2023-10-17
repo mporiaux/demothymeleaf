@@ -17,7 +17,7 @@ public class ComfactServiceStub implements InterfComfactService{
 
     @Override
     public Comfact create(Comfact comfact) throws Exception {
-             comfact.setNumcommande(1);
+             comfact.setIdcommande(1);
              return comfact;
     }
 

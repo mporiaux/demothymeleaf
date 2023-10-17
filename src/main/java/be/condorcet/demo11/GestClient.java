@@ -32,6 +32,7 @@ public class GestClient {
             model.put("error",e.getMessage());
             return "error";
         }
+        System.out.println("lancement de l'affichage");
         return "affichagetousClients";
     }
 

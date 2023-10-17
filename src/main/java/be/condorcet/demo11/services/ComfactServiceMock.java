@@ -20,7 +20,7 @@ public class ComfactServiceMock implements InterfComfactService{
     @Override
     public Comfact create(Comfact comfact) throws Exception {
              numact++;
-             comfact.setNumcommande(numact);
+             comfact.setIdcommande(numact);
              Client cl = comfact.getClient();
              if(cl.getComfacts()==null)  cl.setComfacts(new ArrayList<>());
              cl.getComfacts().add(comfact);
@@ -31,20 +31,20 @@ public class ComfactServiceMock implements InterfComfactService{
     @Override
     public Comfact read(Integer id) throws Exception {
         for(Comfact c : lc){
-             if(c.getNumcommande().equals(id)) return c;
+             if(c.getIdcommande().equals(id)) return c;
         }
         throw new Exception("code inconnu");
     }
 
     @Override
     public Comfact update(Comfact comfact) throws Exception {
-        Integer id = comfact.getNumcommande();
+        Integer id = comfact.getIdcommande();
         Comfact oldCom= read(id);
         oldCom.setNumfact(comfact.getNumfact());
-        oldCom.setDatecom(comfact.getDatecom());
+        oldCom.setDatecommande(comfact.getDatecommande());
         oldCom.setEtat(comfact.getEtat());
         oldCom.setMontant(comfact.getMontant());
-        return read(oldCom.getNumcommande());
+        return read(oldCom.getIdcommande());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ComfactServiceMock implements InterfComfactService{
         Iterator<Comfact> itc= lc.iterator();
         while(itc.hasNext()) {
             Comfact cf = itc.next();
-            if(cf.getNumcommande().equals(comfact.getNumcommande())){
+            if(cf.getIdcommande().equals(comfact.getIdcommande())){
                 cf.getClient().getComfacts().remove(cf);
                 itc.remove();
             }

@@ -8,10 +8,10 @@ import java.util.List;
 @Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 @ToString
 @Entity
-@Table(name = "API_CLIENT", schema = "ORA2", catalog = "XE")
+@Table(name = "APICLIENT", schema = "ORA30", catalog = "ORCL.CONDORCET.BE")
 public class Client {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_generator")
-    @SequenceGenerator(name="client_generator", sequenceName = "API_CLIENT_SEQ", allocationSize=1)
+    @SequenceGenerator(name="client_generator", sequenceName = "APICLIENT_SEQ", allocationSize=1)
     private Integer idclient;
     @NonNull
     private String nom;

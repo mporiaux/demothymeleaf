@@ -28,9 +28,9 @@
   <th>MONTANT</th>
  <!--<tr th:each="comfact : ${moncli.facturesNonPayees()}">-->
   <tr th:each="comfact : ${moncli.comfacts}">
-  <td th:text="${comfact.numcommande}"/>
+  <td th:text="${comfact.idcommande}"/>
   <td th:text="${comfact.numfact}"/>
-  <td th:text="${comfact.datecom}"/>
+  <td th:text="${comfact.datecommande}"/>
   <td th:text="${comfact.etat}"/>
   <td th:text="${comfact.montant}"/>
   </tr>

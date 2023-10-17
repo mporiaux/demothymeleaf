@@ -13,14 +13,14 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @ToString
 @Entity
-@Table(name = "API_COMFACT", schema = "ORA2", catalog = "XE")
+@Table(name = "APICOMFACT", schema = "ORA30", catalog = "ORCL.CONDORCET.BE")
 public class Comfact {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comfact_generator")
-    @SequenceGenerator(name="comfact_generator", sequenceName = "API_COMFACT_SEQ", allocationSize=1)
-    private Integer numcommande;
+    @SequenceGenerator(name="comfact_generator", sequenceName = "APICOMFACT_SEQ", allocationSize=1)
+    private Integer idcommande;
     private Integer numfact;
    @NonNull
-    private Date datecom;
+    private Date datecommande;
    @NonNull
     private String etat;
    @NonNull
@@ -31,6 +31,6 @@ public class Comfact {
 
     public boolean estEnRetard() {
         LocalDate maintenant = LocalDate.now();
-        return maintenant.isAfter(datecom.toLocalDate().plusDays(15));
+        return maintenant.isAfter(datecommande.toLocalDate().plusDays(15));
     }
 }

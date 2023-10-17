@@ -5,17 +5,17 @@ import be.condorcet.demo11.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//@Service
+@Service
 @Transactional(rollbackOn = Exception.class)
 public class ClientServiceImpl implements InterfClientService{
     @Autowired
     private ClientRepository clientRepository;
-
 
     @Override
     public List<Client> read(String nom) {

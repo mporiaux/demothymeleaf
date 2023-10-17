@@ -57,7 +57,7 @@ public class RestComfact {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
      public ResponseEntity<Comfact> majClient(@PathVariable(value = "id") int id,@RequestBody Comfact nouvcf) throws Exception{
         System.out.println("maj de la commade n° " + id);
-        nouvcf.setNumcommande(id);
+        nouvcf.setIdcommande(id);
         Comfact cfact = comfactServiceImpl.update(nouvcf);
         return new ResponseEntity<>(cfact, HttpStatus.OK);
     }
