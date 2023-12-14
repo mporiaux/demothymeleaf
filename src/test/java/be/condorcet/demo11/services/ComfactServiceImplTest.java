@@ -34,7 +34,7 @@ class ComfactServiceImplTest {
             cl = new Client(null,"NomTest","PrenomTest",1000,"LocTest","rue test","1","0001",new ArrayList<>());
             clientServiceImpl.create(cl);
             System.out.println("création du client : "+cl);
-            cf = new Comfact( Date.valueOf(LocalDate.now()),"C",new BigDecimal(1000),cl);
+            cf = new Comfact( Date.valueOf(LocalDate.now()),"c",new BigDecimal(1000),cl);
             comfactServiceImpl.create(cf);
             System.out.println("création de la commande : "+cf);
         }
@@ -63,7 +63,7 @@ class ComfactServiceImplTest {
     @Test
     void create() {
 
-         assertNotEquals(0,cf.getNumcommande(),"numéro de commande non incrémenté");
+         assertNotEquals(0,cf.getIdcommande(),"numéro de commande non incrémenté");
          //tester date et montant
     }
 
@@ -72,7 +72,7 @@ class ComfactServiceImplTest {
     @Test
     void read() {
          try{
-            int numc=cf.getNumcommande();
+            int numc=cf.getIdcommande();
             Comfact co2=comfactServiceImpl.read(numc);
             assertEquals(new BigDecimal(1000.00).setScale(2,RoundingMode.HALF_UP),co2.getMontant().setScale(2,RoundingMode.HALF_UP),"montants différents "+new BigDecimal(1000).setScale(2,RoundingMode.HALF_UP)+"-"+co2.getMontant().setScale(2,RoundingMode.HALF_UP));
             //etc
@@ -86,8 +86,9 @@ class ComfactServiceImplTest {
     void update() {
         //etc
         try{
+
+           cf.setMontant(new BigDecimal(50.25).setScale(2,RoundingMode.HALF_UP));
             cf= comfactServiceImpl.update(cf);
-        cf.setMontant(new BigDecimal(50.25).setScale(2,RoundingMode.HALF_UP));
             assertEquals(cf.getMontant(),new BigDecimal(50.25).setScale(2, RoundingMode.HALF_UP),"montants différents "+cf.getMontant()+"-"+new BigDecimal(50.25));
             //etc
 
@@ -102,7 +103,7 @@ class ComfactServiceImplTest {
         try{
             comfactServiceImpl.delete(cf);
             Assertions.assertThrows(Exception.class, () -> {
-                comfactServiceImpl.read(cf.getNumcommande());
+                comfactServiceImpl.read(cf.getIdcommande());
             },"record non effacé");
         }
         catch(Exception e){
@@ -116,7 +117,7 @@ class ComfactServiceImplTest {
             Collection<Comfact> lco = comfactServiceImpl.getComfacts(cl);
             boolean trouve = false;
             for(Comfact c:lco){
-                if(c.getNumcommande().equals(cf.getNumcommande())){
+                if(c.getIdcommande().equals(cf.getIdcommande())){
                     trouve=true;
                     break;
                 }

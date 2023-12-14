@@ -18,6 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @SpringBootTest
 class ClientServiceImplTest {
     @Autowired
@@ -112,7 +113,7 @@ class ClientServiceImplTest {
     @Test
     void delAvecCom(){ //ajouté
         try{
-            Comfact cf = new Comfact(null,null, Date.valueOf(LocalDate.now()),"C",new BigDecimal(1000),cl);
+            Comfact cf = new Comfact(null,null, Date.valueOf(LocalDate.now()),"c",new BigDecimal(1000),cl);
             comfactServiceImpl.create(cf);
             cl.getComfacts().add(cf);
             clientServiceImpl.update(cl);

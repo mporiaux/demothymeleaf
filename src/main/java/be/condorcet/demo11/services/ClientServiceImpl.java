@@ -47,8 +47,9 @@ public class ClientServiceImpl implements InterfClientService{
     }
 
     @Override
-    public void delete(Client client) throws Exception {
+    public Client delete(Client client) throws Exception {
         clientRepository.deleteById(client.getIdclient());
+        return client;
     }
 
     @Override

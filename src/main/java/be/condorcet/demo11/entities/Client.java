@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 @ToString
@@ -23,6 +24,19 @@ public class Client {
     private String num;
     @NonNull
     private String tel;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(idclient, client.idclient);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idclient);
+    }
 
     @JsonIgnore
     // @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)

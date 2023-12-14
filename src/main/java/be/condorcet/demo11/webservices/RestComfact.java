@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
 @RestController
 @RequestMapping("/comfacts")
 public class RestComfact {

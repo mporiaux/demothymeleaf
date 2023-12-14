@@ -9,10 +9,11 @@ import be.condorcet.demo11.repositories.ComfactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-//@Service
+@Service
 @Transactional(rollbackOn = Exception.class)
 public class ComfactServiceImpl  implements InterfComfactService{
     @Autowired
@@ -39,8 +40,9 @@ public class ComfactServiceImpl  implements InterfComfactService{
     }
 
     @Override
-    public void delete(Comfact comfact) throws Exception {
+    public Comfact delete(Comfact comfact) throws Exception {
         comfactRepository.deleteById(comfact.getIdcommande());
+        return comfact;
     }
 
     @Override
